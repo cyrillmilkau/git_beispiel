@@ -15,7 +15,7 @@ with o3d.utility.VerbosityContextManager(
 
 #remove low density vertices
 densities = np.asarray(densities)
-vertices_to_remove = densities < np.quantile(densities, 0.1)
+vertices_to_remove = densities < np.quantile(densities, 0.5)
 poisson_mesh.remove_vertices_by_mask(vertices_to_remove)
 poisson_mesh.paint_uniform_color([0.5,0.5,0.5])
 
