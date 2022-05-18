@@ -15,9 +15,8 @@ with o3d.utility.VerbosityContextManager(
 
 #remove low density vertices
 densities = np.asarray(densities)
-vertices_to_remove = densities < np.quantile(densities, 0.5)
+vertices_to_remove = densities < np.quantile(densities, 1.0)
 poisson_mesh.remove_vertices_by_mask(vertices_to_remove)
 # poisson_mesh.paint_uniform_color([0.5,0.5,0.5])
 
-o3d.visualization.draw_geometries([poisson_mesh],mesh_show_wireframe=True, mesh_show_back_face=True)
-# o3d.io.write_triangle_mesh("gewoelbe2_poisson.ply", poisson_mesh)
+o3d.visualization.draw_geometries([pcd, poisson_mesh],mesh_show_wireframe=True, mesh_show_back_face=True)
